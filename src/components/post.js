@@ -220,12 +220,14 @@ const Post = (props) => {
       <p>{post.content}</p>
       {isMediaThere ? (
         mediaType === "image" ? (
+          <a href={mediaObj}>
           <img
             width='100%'
             height='100%'
             object-fit='contain'
             src={/*"data:image/jpeg;base64, " +*/ mediaObj}
           />
+          </a>
         ) : mediaType === "video" ? (
           <video width='100%' height='100%' object-fit='contain' controls>
             <source src={mediaObj}></source>
