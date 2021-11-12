@@ -92,6 +92,7 @@ const Posts = () => {
 
         //Now upload any attached media
 
+        setPostCompLst([]);
         getPosts();
         setShowForm(!showForm);
       } else {
