@@ -93,7 +93,7 @@ const Posts = () => {
         //Now upload any attached media
 
         setPostCompLst([]);
-        getPosts();
+       // getPosts();
         setShowForm(!showForm);
       } else {
         let mediaType = file[0]["type"].split("/")[0];
