@@ -42,7 +42,7 @@ const Posts = () => {
       );
     });
 
-    setPosts([...newPostLst]);
+    //setPosts([...newPostLst]);
     setPostCompLst([...newPostCompLst]);
   };
 
