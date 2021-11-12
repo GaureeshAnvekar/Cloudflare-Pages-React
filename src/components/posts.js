@@ -29,20 +29,21 @@ const Posts = () => {
   //ar file;
   const getPosts = async () => {
     const postsLstData = await fetch("https://my-worker-with-router.ganvekar.workers.dev/posts"); //posts
-    const postsLst = await postsLstData.json();
-    postsLst.map((post, index) => {
+    const newPostLst = await postsLstData.json();
+    newPostLst.map((post, index) => {
       post.originalPostId = index;
     });
-    postsLst.forEach((post, index) => {
-      postCompLst.push(
+    let newPostCompLst = []
+    newPostLst.forEach((post, index) => {
+      newPostCompLst.push(
         <div>
           <Post key={index} post={post} postId={post.originalPostId}></Post>
         </div>
       );
     });
 
-    setPosts([...postsLst]);
-    setPostCompLst([...postCompLst]);
+    setPosts([...newPostLst]);
+    setPostCompLst([...newPostCompLst]);
   };
 
   useEffect(() => {
