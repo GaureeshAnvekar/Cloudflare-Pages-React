@@ -53,6 +53,7 @@ const Posts = () => {
   const submitPost = async (e) => {
     e.preventDefault();
 
+    console.log("Yes");
     const endPoint1 = "https://my-worker-with-router.ganvekar.workers.dev/posts";
     const endPoint2 = "https://my-worker-with-router.ganvekar.workers.dev/media";
 
