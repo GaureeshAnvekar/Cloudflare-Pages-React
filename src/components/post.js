@@ -250,6 +250,7 @@ const Post = (props) => {
 
               if (localDislikes > 0) {
                 setLocalDislikes(localDislikes - 1);
+                post.dislikes -= 1;
                 const res = await axios.put(
                   "https://my-worker-with-router.ganvekar.workers.dev/dislikesDecrement/" + props.postId
                 );
@@ -272,7 +273,7 @@ const Post = (props) => {
         </a>
         <span>
           {post.hasOwnProperty("likes")
-            ? post.likes + localLikes
+            ? post.likes
             : 0 + localLikes}
         </span>{" "}
         <a
@@ -285,6 +286,7 @@ const Post = (props) => {
 
               if (localLikes > 0) {
                 setLocalLikes(localLikes - 1);
+                post.likes -= 1;
                 const res = await axios.put(
                   "https://my-worker-with-router.ganvekar.workers.dev/likesDecrement/" + props.postId
                 );
@@ -308,7 +310,7 @@ const Post = (props) => {
         </a>
         <span>
           {post.hasOwnProperty("dislikes")
-            ? post.dislikes + localDislikes
+            ? post.dislikes
             : 0 + localDislikes}
         </span>
       </p>
