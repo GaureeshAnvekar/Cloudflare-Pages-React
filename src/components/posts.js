@@ -31,6 +31,8 @@ const Posts = () => {
     const postsLstData = await fetch(
       "https://my-worker-with-router.ganvekar.workers.dev/posts"
     ); //posts
+    if (postsLstData == null || postsLstData == undefined) return;
+    
     const newPostLst = await postsLstData.json();
     newPostLst.map((post, index) => {
       post.originalPostId = index;
