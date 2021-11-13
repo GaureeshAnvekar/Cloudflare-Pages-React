@@ -103,7 +103,7 @@ const Posts = () => {
         setPostCompLst([
           ...postCompLst,
           <div>
-            <Post key={len + 1} post={resBody} postId={len + 1}></Post>
+            <Post key={len} post={resBody} postId={len}></Post>
           </div>,
         ]);
         //getPosts();
@@ -152,7 +152,7 @@ const Posts = () => {
         setPostCompLst([
           ...postCompLst,
           <div>
-            <Post key={len + 1} post={resBody} postId={len + 1}></Post>
+            <Post key={len} post={resBody} postId={len}></Post>
           </div>,
         ]);
 
