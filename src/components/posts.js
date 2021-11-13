@@ -83,7 +83,7 @@ const Posts = () => {
           }
         );
 
-        let resBody = await res.data.json();
+        let resBody = await JSON.parse(res.data);
         console.log("resbody");
         console.log(resBody);
 
