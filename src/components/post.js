@@ -245,6 +245,7 @@ const Post = (props) => {
             e.preventDefault();
             if (localLikes != 1) {
               setLocalLikes(localLikes + 1);
+              props.likes += 1;
               //console.log(props.postId);
 
               if (localDislikes > 0) {
@@ -280,6 +281,7 @@ const Post = (props) => {
             e.preventDefault();
             if (localDislikes != 1) {
               setLocalDislikes(localDislikes + 1);
+              props.localDislikes += 1;
 
               if (localLikes > 0) {
                 setLocalLikes(localLikes - 1);
