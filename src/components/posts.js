@@ -79,8 +79,9 @@ const Posts = () => {
           }
         );
 
-        console.log("headers");
-        console.log(res.headers);
+        let resBody = await res.json()
+        console.log("resbody");
+        console.log(resBody);
 
         setErrs({
           ...errs,
