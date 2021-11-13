@@ -84,8 +84,8 @@ const Posts = () => {
         );
 
         let resBody = res.data;
-        console.log("resbody");
-        console.log(resBody);
+        //console.log("resbody");
+        //console.log(resBody);
 
         setErrs({
           ...errs,
@@ -135,8 +135,9 @@ const Posts = () => {
           },
         });
 
-        console.log("headers");
-        console.log(res2.headers);
+        let resBody = res2.data;
+        //console.log("headers");
+        //console.log(res2.headers);
         setErrs({
           ...errs,
           userNameErr: false,
@@ -146,9 +147,16 @@ const Posts = () => {
           unauthorized: false,
         });
 
-        //Now upload any attached media
+        let len = postCompLst.length;
 
-        getPosts();
+        setPostCompLst([
+          ...postCompLst,
+          <div>
+            <Post key={len + 1} post={resBody} postId={len + 1}></Post>
+          </div>,
+        ]);
+
+        //getPosts();
         setShowForm(!showForm);
       }
     } catch (err) {

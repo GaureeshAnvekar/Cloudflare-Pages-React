@@ -29,7 +29,9 @@ const Post = (props) => {
       let comm = comment.current.value;
       currComments.push(comm);
       setCurrComments(currComments);
-      const endPoint = "https://my-worker-with-router.ganvekar.workers.dev/submitComment/" + props.postId;
+      const endPoint =
+        "https://my-worker-with-router.ganvekar.workers.dev/submitComment/" +
+        props.postId;
       const body = JSON.stringify(comm);
 
       const res = await axios.put(endPoint, body, {
@@ -155,9 +157,12 @@ const Post = (props) => {
   const getMedia = async (props) => {
     let mediaKey = props.post.mediaKey;
 
-    const res = await axios.get("https://my-worker-with-router.ganvekar.workers.dev/getMedia/" + mediaKey, {
-      responseType: "arraybuffer",
-    });
+    const res = await axios.get(
+      "https://my-worker-with-router.ganvekar.workers.dev/getMedia/" + mediaKey,
+      {
+        responseType: "arraybuffer",
+      }
+    );
 
     //console.log(res.data);
     let objectURL = URL.createObjectURL(
@@ -220,13 +225,13 @@ const Post = (props) => {
       <p>{post.content}</p>
       {isMediaThere ? (
         mediaType === "image" ? (
-          <a href={mediaObj} target="_blank">
-          <img
-            width='100%'
-            height='100%'
-            object-fit='contain'
-            src={/*"data:image/jpeg;base64, " +*/ mediaObj}
-          />
+          <a href={mediaObj} target='_blank'>
+            <img
+              width='100%'
+              height='100%'
+              object-fit='contain'
+              src={/*"data:image/jpeg;base64, " +*/ mediaObj}
+            />
           </a>
         ) : mediaType === "video" ? (
           <video width='100%' height='100%' object-fit='contain' controls>
@@ -252,11 +257,13 @@ const Post = (props) => {
                 setLocalDislikes(localDislikes - 1);
                 post.dislikes -= 1;
                 const res = await axios.put(
-                  "https://my-worker-with-router.ganvekar.workers.dev/dislikesDecrement/" + props.postId
+                  "https://my-worker-with-router.ganvekar.workers.dev/dislikesDecrement/" +
+                    props.postId
                 );
               }
               const res = await axios.put(
-                "https://my-worker-with-router.ganvekar.workers.dev/likesIncrement/" + props.postId
+                "https://my-worker-with-router.ganvekar.workers.dev/likesIncrement/" +
+                  props.postId
               );
             }
           }}
@@ -272,9 +279,7 @@ const Post = (props) => {
           </i>
         </a>
         <span>
-          {post.hasOwnProperty("likes")
-            ? post.likes
-            : 0 + localLikes}
+          {post.hasOwnProperty("likes") ? post.likes : 0 + localLikes}
         </span>{" "}
         <a
           href='#'
@@ -288,11 +293,13 @@ const Post = (props) => {
                 setLocalLikes(localLikes - 1);
                 post.likes -= 1;
                 const res = await axios.put(
-                  "https://my-worker-with-router.ganvekar.workers.dev/likesDecrement/" + props.postId
+                  "https://my-worker-with-router.ganvekar.workers.dev/likesDecrement/" +
+                    props.postId
                 );
               }
               const res = await axios.put(
-                "https://my-worker-with-router.ganvekar.workers.dev/dislikesIncrement/" + props.postId
+                "https://my-worker-with-router.ganvekar.workers.dev/dislikesIncrement/" +
+                  props.postId
               );
             }
             console.log(localDislikes);
@@ -309,9 +316,7 @@ const Post = (props) => {
           </i>
         </a>
         <span>
-          {post.hasOwnProperty("dislikes")
-            ? post.dislikes
-            : 0 + localDislikes}
+          {post.hasOwnProperty("dislikes") ? post.dislikes : 0 + localDislikes}
         </span>
       </p>
       <div>
