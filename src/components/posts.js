@@ -28,12 +28,14 @@ const Posts = () => {
 
   //ar file;
   const getPosts = async () => {
-    const postsLstData = await fetch("https://my-worker-with-router.ganvekar.workers.dev/posts"); //posts
+    const postsLstData = await fetch(
+      "https://my-worker-with-router.ganvekar.workers.dev/posts"
+    ); //posts
     const newPostLst = await postsLstData.json();
     newPostLst.map((post, index) => {
       post.originalPostId = index;
     });
-    let newPostCompLst = []
+    let newPostCompLst = [];
     newPostLst.forEach((post, index) => {
       newPostCompLst.push(
         <div>
@@ -54,8 +56,10 @@ const Posts = () => {
     e.preventDefault();
 
     console.log("Yes");
-    const endPoint1 = "https://my-worker-with-router.ganvekar.workers.dev/posts";
-    const endPoint2 = "https://my-worker-with-router.ganvekar.workers.dev/media";
+    const endPoint1 =
+      "https://my-worker-with-router.ganvekar.workers.dev/posts";
+    const endPoint2 =
+      "https://my-worker-with-router.ganvekar.workers.dev/media";
 
     try {
       //if media file is present, first send that, then get the unique "key" for that media from the response, then send the json
@@ -79,7 +83,7 @@ const Posts = () => {
           }
         );
 
-        let resBody = await res.json()
+        let resBody = await res.data.json();
         console.log("resbody");
         console.log(resBody);
 
@@ -94,8 +98,16 @@ const Posts = () => {
 
         //Now upload any attached media
 
-        setPostCompLst([]);
-        getPosts();
+        let len = postCompLst.length;
+
+        setPostCompLst([
+          ...postCompLst,
+          <div>
+            <Post key={len + 1} post={resBody} postId={len + 1}></Post>
+          </div>,
+        ]);
+        //getPosts();
+
         setShowForm(!showForm);
       } else {
         let mediaType = file[0]["type"].split("/")[0];
